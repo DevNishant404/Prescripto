@@ -46,7 +46,7 @@ function RelatedDoc({ docId, speciality }) {
             })
         }
     </div>
-    <button onClick={()=>{navigate("/doctors"); scroll(0.0)} } className="bg-primary px-10 py-1 font-semibold rounded-full text-white cursor-pointer hover:scale-105 duration-200 mt-5">More</button>
+    <button onClick={()=>{navigate("/doctors"); scroll(0,0)} } className="bg-primary px-10 py-1 font-semibold rounded-full text-white cursor-pointer hover:scale-105 duration-200 mt-5">More</button>
 </div>
   );
 }
