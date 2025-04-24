@@ -7,6 +7,7 @@ function Navbar() {
 
     const[showMenu, setShowMenu]=useState(false)
     const[token,setToken]=useState(true)
+    const [openProfile,setOpenProfile]=useState(false)
 
     function handleonclick(){
       setShowMenu(false)
@@ -14,7 +15,10 @@ function Navbar() {
 
     document.addEventListener("scroll",()=>{
       setShowMenu(false)
+      setOpenProfile(false)
     })
+
+    console.log(openProfile)
   return (
     <div
     
@@ -41,14 +45,19 @@ function Navbar() {
       <div className="gap-3 flex relative">
         {
             token?
-             <div className="flex items-center gap-2 cursor-pointer group relative">
-                <img src={assets.profile_pic} className="w-8 rounded-full" alt="" />
-                <img src={assets.dropdown_icon} className="w-2.5" alt="" />
-                <div className="absolute top-0 right-0 pt-14 text-base font-medium  text-gray-600 hidden z-20  group-hover:block">
+             <div className=" group relative cursor-pointer">
+              <div
+              onClick={()=>setOpenProfile(true)}
+              className="flex items-center gap-2 cursor-pointer">
+              <img src={assets.profile_pic} className="w-8 rounded-full" alt="" />
+              <img src={assets.dropdown_icon} className="w-2.5" alt="" />
+              </div>
+                
+                <div className={`absolute top-0 right-0 pt-14 text-base ${openProfile? "block":"hidden"} font-medium  text-gray-600  z-20  `}>
                 <div className="min-w-48 bg-stone-100 rounded p-3  flex flex-col gap-2">
-                    <p  onClick={()=>navigate("/my-profile")}  className="hover:text-black cursor-pointer">My Profile</p>
-                    <p  onClick={()=>navigate("/my-appointments")}  className="hover:text-black cursor-pointer">My appointment</p>
-                    <p  onClick={()=>setToken(false)}  className="hover:text-black cursor-pointer">Logout</p>
+                    <p  onClick={()=>{navigate("/my-profile");setOpenProfile(false)}}  className="hover:text-black cursor-pointer">My Profile</p>
+                    <p  onClick={()=>{navigate("/my-appointments");setOpenProfile(false)}}  className="hover:text-black cursor-pointer">My appointment</p>
+                    <p  onClick={()=>{setToken(false),setOpenProfile(false)}}  className="hover:text-black cursor-pointer">Logout</p>
                 </div>
                 </div>
                 
