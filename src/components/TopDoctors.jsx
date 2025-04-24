@@ -20,7 +20,7 @@ function TopDoctors() {
 
                         return (
                             <div
-                            onClick={()=>navigate(`/appointment/${doctor._id}`)}
+                            onClick={()=>{navigate(`/appointment/${doctor._id}`);scroll(0,0)}}
                             key={idx} className="border overflow-hidden rounded-lg cursor-pointer border-gray-200 shadow">
                                 <img className="bg-blue-50 hover:scale-105 duration-500" src={doctor.image} alt="" />
                                 <div className="p-2">
